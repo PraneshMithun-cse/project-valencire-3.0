@@ -25,9 +25,9 @@ export default function ProductCard({ prod }: { prod: Product }) {
   }
 
   return (
-    <div className="group cursor-pointer">
-      {/* Image container — flush, rounded, clips image */}
-      <div className="relative overflow-hidden rounded-2xl bg-[#EDECE8] aspect-[3/4]">
+    <div className="group cursor-pointer flex flex-col h-full bg-white">
+      {/* Image container — flush, clips image */}
+      <div className="relative overflow-hidden aspect-[3/4] w-full bg-[#f5f3f0]">
         {/* Primary image */}
         <Link href={`/product/${prod.id}`} className="block w-full h-full absolute inset-0">
           <Image
@@ -67,11 +67,9 @@ export default function ProductCard({ prod }: { prod: Product }) {
       </div>
 
       {/* Info row */}
-      <Link href={`/product/${prod.id}`} className="block mt-2.5 px-0.5">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="text-[13px] text-black leading-snug">{prod.name}</h3>
-          <p className="text-[13px] text-black shrink-0 whitespace-nowrap">RS. {prod.price}</p>
-        </div>
+      <Link href={`/product/${prod.id}`} className="block pt-5 pb-6 flex-grow flex flex-col items-center text-center bg-white">
+        <h3 className="text-[12px] font-bold text-black tracking-wide leading-snug">{prod.name}</h3>
+        <p className="text-[12px] text-gray-500 mt-1">RS. {prod.price}</p>
       </Link>
     </div>
   );

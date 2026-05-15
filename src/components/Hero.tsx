@@ -6,8 +6,8 @@ import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const SCROLL_END = 280; // px — where logo fully reaches navbar
-const LOGO_START = 450; // px — hero logo size
-const LOGO_END = 60;    // px — navbar logo landing size
+const LOGO_START = 650; // px — hero logo size
+const LOGO_END = 240;    // px — navbar logo landing size
 
 export default function Hero() {
   const [scrollY, setScrollY] = useState(0);
@@ -55,7 +55,7 @@ export default function Hero() {
           left: "50%",
           transform: "translate(-50%, -50%)",
           width: logoSize,
-          height: logoSize,
+          height: logoSize * 0.25,
           opacity,
           pointerEvents: "none",
           zIndex: 55,
@@ -63,7 +63,7 @@ export default function Hero() {
         }}
       >
         <Image
-          src="/images/logo_final.png"
+          src="/images/text-logo-nav copy.png"
           alt="Valenciré"
           fill
           className="object-contain drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)]"

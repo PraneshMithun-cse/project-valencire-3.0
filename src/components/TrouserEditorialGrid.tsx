@@ -34,7 +34,7 @@ function Slot({
   return (
     <Link
       href={`/product/${prod.id}`}
-      className={`group relative overflow-hidden rounded-xl bg-[#ECEAE6] ${className}`}
+      className={`group relative overflow-hidden bg-[#f5f3f0] ${className}`}
     >
       <Image
         src={imgSrc}
@@ -58,10 +58,10 @@ export default function TrouserEditorialGrid() {
 
   return (
     <section className="py-16 bg-[#f5f3f0]">
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+      <div className="w-full">
 
         {/* Header */}
-        <div className="flex items-start justify-between mb-8">
+        <div className="flex items-start justify-between mb-8 px-6 md:px-10 max-w-[1440px] mx-auto">
           <div>
             <p className="text-[10px] tracking-[0.3em] uppercase font-bold text-gray-400 mb-1.5">
               SHOP BY FIT
@@ -89,7 +89,7 @@ export default function TrouserEditorialGrid() {
         </div>
 
         {/* Editorial grid */}
-        <div className="flex gap-2 h-[480px] md:h-[680px]">
+        <div className="flex gap-[1px] bg-white border border-white h-[480px] md:h-[680px]">
 
           {/* Left — full-height portrait */}
           <Slot
@@ -99,9 +99,9 @@ export default function TrouserEditorialGrid() {
           />
 
           {/* Middle two columns */}
-          <div className="flex-1 flex gap-2">
+          <div className="flex-1 flex gap-[1px]">
             {/* Col 2 — tall top, shorter bottom */}
-            <div className="flex-1 flex flex-col gap-2">
+            <div className="flex-1 flex flex-col gap-[1px]">
               <Slot
                 prod={p1}
                 imgSrc={p1.image}
@@ -114,7 +114,7 @@ export default function TrouserEditorialGrid() {
               />
             </div>
             {/* Col 3 — shorter top, tall bottom */}
-            <div className="flex-1 flex flex-col gap-2">
+            <div className="flex-1 flex flex-col gap-[1px]">
               <Slot
                 prod={p2}
                 imgSrc={p2.image}

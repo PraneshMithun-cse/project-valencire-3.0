@@ -33,8 +33,8 @@ function ProductSection({ title, subtitle, products, showFilter = false, allProd
     : categoryPool.slice(0, 4);
 
   return (
-    <section className="py-20 max-w-[1440px] mx-auto px-6 md:px-10">
-      <div className="flex justify-between items-start mb-8">
+    <section className="py-20 w-full">
+      <div className="flex justify-between items-start mb-8 px-6 md:px-10 max-w-[1440px] mx-auto">
         <div>
           {subtitle && (
             <ScrollReveal animation="fade-up" delay={0}>
@@ -81,7 +81,7 @@ function ProductSection({ title, subtitle, products, showFilter = false, allProd
         </ScrollReveal>
       )}
 
-      <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-4 md:gap-8">
+      <div className="grid grid-cols-2 gap-[1px] bg-white border-y border-white md:grid-cols-4">
         {displayProducts.length > 0 ? (
           displayProducts.map((prod, idx) => (
             <ScrollReveal key={prod.id} animation="fade-up" delay={0.1 + idx * 0.08}>
@@ -189,8 +189,8 @@ export default function Home() {
       </section>
 
       {/* 5. Just Arrived Section */}
-      <section className="py-24 max-w-[1440px] mx-auto px-6 md:px-10">
-        <div className="flex justify-between items-end mb-20">
+      <section className="py-24 w-full">
+        <div className="flex justify-between items-end mb-20 px-6 md:px-10 max-w-[1440px] mx-auto">
           <div>
             <SplitTextReveal
               text="Just Arrived"
@@ -208,7 +208,7 @@ export default function Home() {
           </ScrollReveal>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-[1px] bg-white border-y border-white md:grid-cols-4">
           {JUST_ARRIVED.map((prod, idx) => (
             <ScrollReveal key={prod.id} animation="fade-up" delay={0.1 + idx * 0.08}>
               <ProductCard prod={prod} />

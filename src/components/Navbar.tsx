@@ -180,7 +180,7 @@ export default function Navbar() {
                   onClick={() => setActiveMenu(null)}
                   className="flex flex-col items-center gap-1.5 group"
                 >
-                  <VCMark size={scrolled ? 36 : 42} color={iconColor} />
+                  <VCMark size={scrolled ? 180 : 240} color={iconColor} />
                   <div className="overflow-hidden">
                     <ValencireWordmark size={scrolled ? "0.55rem" : "0.62rem"} color={iconColor} />
                   </div>

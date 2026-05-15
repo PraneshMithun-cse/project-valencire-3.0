@@ -7,7 +7,7 @@ for img in "$DIR"/*.png; do
   fi
   
   # Skip logo
-  if [[ "$img" == *logo_final.png ]]; then
+  if [[ "$img" == *text-logo-nav copy.png ]]; then
     continue
   fi
 

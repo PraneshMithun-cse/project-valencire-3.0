@@ -59,7 +59,7 @@ export default function CollectionProductBrowser({
       </div>
 
       {sortedProducts.length > 0 ? (
-        <div className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-[1px] bg-white border-y border-white md:grid-cols-3 lg:grid-cols-4">
           {sortedProducts.map((prod) => (
             <ProductCard key={prod.id} prod={prod} />
           ))}

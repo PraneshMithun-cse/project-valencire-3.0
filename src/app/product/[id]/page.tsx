@@ -40,7 +40,7 @@ export default function ProductPage() {
   const images = [product.image, ...(product.images ?? [])].filter(Boolean);
 
   function handleAdd() {
-    if (!selectedSize) { setShowSizes(true); return; }
+    if (!product || !selectedSize) { setShowSizes(true); return; }
     addToCart(product, selectedSize);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
