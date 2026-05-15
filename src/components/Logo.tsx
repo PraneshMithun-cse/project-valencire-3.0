@@ -12,7 +12,7 @@ export const VCMark = ({ size = 40, color }: { size?: number | string, color?: s
         alt="Valencire Logo"
         fill
         className="object-contain transition-all duration-500"
-        style={{ filter: color === '#fff' ? 'invert(1)' : 'invert(0)' }}
+        style={{ filter: color === '#fff' ? 'brightness(0) invert(1)' : 'invert(0)' }}
         priority
       />
     </div>
@@ -29,7 +29,7 @@ export const TextLogo = ({ className = "", color = "#000" }: { className?: strin
       alt="VALENCIRÉ"
       fill
       className="object-contain transition-all duration-500"
-      style={{ filter: color === '#fff' ? 'invert(1)' : 'invert(0)' }}
+      style={{ filter: color === '#fff' ? 'brightness(0) invert(1)' : 'invert(0)' }}
       priority
     />
   </div>

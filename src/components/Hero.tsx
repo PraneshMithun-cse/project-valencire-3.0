@@ -72,13 +72,12 @@ export default function Hero() {
       </div>
 
       {/* CTA */}
-      <div className="absolute bottom-16 left-6 md:left-[7%] z-10">
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10">
         <Link
-          href="/collections/jeans"
-          className="group flex items-center border-[0.5px] border-white/80 text-white/90 px-8 py-3 text-[11px] md:text-xs font-light lowercase tracking-[0.25em] transition-colors duration-300 hover:border-white hover:text-white"
+          href="/collections/all"
+          className="group flex items-center bg-white text-black px-10 py-4 text-[11px] md:text-[13px] font-bold uppercase tracking-[0.3em] transition-transform duration-500 hover:scale-105"
         >
-          shop collection
-          <ArrowRight className="w-3 h-3 ml-4 transition-transform duration-300 group-hover:translate-x-1" strokeWidth={1} />
+          Shop Collection
         </Link>
       </div>
     </div>

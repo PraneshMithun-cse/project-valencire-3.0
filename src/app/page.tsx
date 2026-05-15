@@ -9,6 +9,7 @@ import ProductCard from "@/components/ProductCard";
 import { DENIMS, BEST_SELLERS, JUST_ARRIVED, ALL_PRODUCTS } from "@/data/products";
 import ScrollReveal, { SplitTextReveal, LineReveal } from "@/components/ScrollReveal";
 import TrouserEditorialGrid from "@/components/TrouserEditorialGrid";
+import ShopTheLook from "@/components/ShopTheLook";
 
 type Product = { id: string; name: string; price: string; image: string; category?: string; subcategory?: string; [key: string]: unknown };
 
@@ -129,6 +130,8 @@ export default function Home() {
         products={BEST_SELLERS}
       />
 
+      {/* 3. Shop The Look */}
+      <ShopTheLook />
 
       {/* 4. Dynamic Campaign Gallery */}
       <section className="py-32 bg-[#EAE8E3] overflow-hidden border-y-[4px] border-black relative">

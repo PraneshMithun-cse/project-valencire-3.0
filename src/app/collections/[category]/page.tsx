@@ -23,7 +23,7 @@ export default async function CollectionPage(props: {
   const sort = searchParams.sort;
 
   // Get unique subcategories for this category
-  const categoryProducts = ALL_PRODUCTS.filter((p) => p.category === category);
+  const categoryProducts = category === "all" ? ALL_PRODUCTS : ALL_PRODUCTS.filter((p) => p.category === category);
   const subcategories = [
     ...new Set(
       categoryProducts
@@ -75,9 +75,9 @@ export default async function CollectionPage(props: {
             basePath={`/collections/${category}`}
           />
         )}
-
-        <CollectionProductBrowser products={filteredProducts} title={title} />
       </div>
+
+      <CollectionProductBrowser products={filteredProducts} title={title} />
     </div>
   );
 }

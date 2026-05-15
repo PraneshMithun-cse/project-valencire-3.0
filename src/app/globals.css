@@ -1,6 +1,29 @@
 @import "tailwindcss";
 
 /* ─────────────────────────────────────────────
+   CUSTOM BRAND FONTS
+───────────────────────────────────────────── */
+@font-face {
+  font-family: 'Corigo';
+  src: url('/corigo/Corigo.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  /* Exclude numbers (0-9) so they fall back to system font */
+  unicode-range: U+0000-002F, U+003A-10FFFF;
+}
+
+@font-face {
+  font-family: 'Crowk';
+  src: url('/crowk/Crowk-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  /* Exclude numbers (0-9) so they fall back to system font */
+  unicode-range: U+0000-002F, U+003A-10FFFF;
+}
+
+/* ─────────────────────────────────────────────
    VALENCIRE — Global Design Tokens
 ───────────────────────────────────────────── */
 :root {
@@ -13,9 +36,9 @@
   --border: #e8e8e8;
   --border-dark: #1a1a1a;
   
-  /* Replace all custom fonts with Apple system fonts (SF Pro Display / Text automatically handled by macOS/iOS) */
-  --font-inter: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-cormorant: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  /* Applying brand fonts globally over legacy variable names */
+  --font-inter: "Corigo", sans-serif;
+  --font-cormorant: "Crowk", serif;
 }
 
 /* Font families mapped from next/font CSS vars */

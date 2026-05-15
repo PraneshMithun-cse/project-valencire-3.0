@@ -5,8 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/context/CartContext";
 import AppShell from "@/components/AppShell";
-
-
+import ScrollBlurs from "@/components/ScrollBlurs";
 
 export const metadata: Metadata = {
   title: "VALENCIRE | Luxury Menswear",
@@ -27,7 +26,9 @@ export default function RootLayout({
       >
         <CartProvider>
           <AppShell>
-            <div className="push-content-wrapper">
+            <ScrollBlurs />
+            
+            <div className="push-content-wrapper relative z-10">
               <Navbar />
               <main className="flex-grow">{children}</main>
             </div>

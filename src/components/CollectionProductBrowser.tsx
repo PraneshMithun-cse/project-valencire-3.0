@@ -40,22 +40,24 @@ export default function CollectionProductBrowser({
 
   return (
     <>
-      <div className="mb-12 flex items-center justify-between border-y border-gray-100 py-4">
-        <div className="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-black">
-          <button className="transition-colors hover:text-gray-500">Filter +</button>
-          <span className="text-gray-400">{products.length} Results</span>
+      <div className="mb-12 border-y border-gray-100 py-4 w-full">
+        <div className="flex items-center justify-between max-w-[1440px] mx-auto px-6 md:px-10">
+          <div className="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-black">
+            <button className="transition-colors hover:text-gray-500">Filter +</button>
+            <span className="text-gray-400">{products.length} Results</span>
+          </div>
+          <select
+            value={sortMode}
+            onChange={(event) => setSortMode(event.target.value as SortMode)}
+            className="max-w-[190px] cursor-pointer bg-transparent text-right text-[11px] font-bold uppercase tracking-widest text-black outline-none"
+            aria-label="Sort products"
+          >
+            <option value="featured">Sort By: Featured</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+            <option value="newest">Newest</option>
+          </select>
         </div>
-        <select
-          value={sortMode}
-          onChange={(event) => setSortMode(event.target.value as SortMode)}
-          className="max-w-[190px] cursor-pointer bg-transparent text-right text-[11px] font-bold uppercase tracking-widest text-black outline-none"
-          aria-label="Sort products"
-        >
-          <option value="featured">Sort By: Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="newest">Newest</option>
-        </select>
       </div>
 
       {sortedProducts.length > 0 ? (
@@ -65,20 +67,22 @@ export default function CollectionProductBrowser({
           ))}
         </div>
       ) : (
-        <div className="mb-24 border-y border-black/10 bg-[#faf8f4] px-6 py-16 text-center md:mb-0 md:py-24">
-          <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.45em] text-black/35">
-            Valencire Atelier
-          </p>
-          <h3 className="text-4xl font-semibold tracking-tight text-black md:text-5xl">Coming Soon</h3>
-          <p className="mx-auto mt-5 max-w-md text-sm leading-7 text-black/55">
-            The {title.toLowerCase()} selection is being refined and will arrive soon.
-          </p>
-          <Link
-            href="/"
-            className="mt-9 inline-block border-b border-black pb-1 text-[10px] font-bold uppercase tracking-[0.3em] text-black transition-colors hover:text-black/50"
-          >
-            Return to the collection
-          </Link>
+        <div className="mb-24 border-y border-black/10 bg-[#faf8f4] py-16 text-center md:mb-0 md:py-24 w-full">
+          <div className="max-w-[1440px] mx-auto px-6 md:px-10">
+            <p className="mb-5 text-[10px] font-bold uppercase tracking-[0.45em] text-black/35">
+              Valencire Atelier
+            </p>
+            <h3 className="text-4xl font-semibold tracking-tight text-black md:text-5xl">Coming Soon</h3>
+            <p className="mx-auto mt-5 max-w-md text-sm leading-7 text-black/55">
+              The {title.toLowerCase()} selection is being refined and will arrive soon.
+            </p>
+            <Link
+              href="/"
+              className="mt-9 inline-block border-b border-black pb-1 text-[10px] font-bold uppercase tracking-[0.3em] text-black transition-colors hover:text-black/50"
+            >
+              Return to the collection
+            </Link>
+          </div>
         </div>
       )}
     </>
