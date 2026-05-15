@@ -10,9 +10,9 @@ export default function ScrollBlurs() {
 
   return (
     <>
-      {/* Global Bottom Scroll Blur (Liquid glass fade) */}
+      {/* Global Bottom Scroll Blur (Liquid glass fade) - Hidden on mobile */}
       <div 
-        className="pointer-events-none fixed bottom-0 left-0 z-40 w-full h-40 backdrop-blur-[24px] [mask-image:linear-gradient(to_top,black_10%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_top,black_10%,transparent_100%)]" 
+        className="hidden md:block pointer-events-none fixed bottom-0 left-0 z-40 w-full h-40 backdrop-blur-[24px] [mask-image:linear-gradient(to_top,black_10%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_top,black_10%,transparent_100%)]" 
         aria-hidden="true" 
       />
     </>

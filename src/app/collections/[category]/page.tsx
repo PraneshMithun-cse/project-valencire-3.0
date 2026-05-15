@@ -62,7 +62,7 @@ export default async function CollectionPage(props: {
           <h1 className="text-5xl md:text-6xl font-semibold text-black tracking-tight capitalize">
             {title}
           </h1>
-          <p className="text-sm text-gray-500 mt-4 max-w-xl">
+          <p className="text-xl md:text-2xl text-gray-500 mt-6 max-w-2xl leading-relaxed" style={{ fontFamily: 'var(--font-cormorant-garamond)' }}>
             Explore our curated selection of {title.toLowerCase()}. Crafted with precision and the finest materials for the modern wardrobe.
           </p>
         </div>

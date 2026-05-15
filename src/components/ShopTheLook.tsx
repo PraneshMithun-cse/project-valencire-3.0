@@ -26,12 +26,12 @@ export default function ShopTheLook() {
   };
 
   return (
-    <section className="py-24 max-w-[1440px] mx-auto px-6 md:px-10 bg-white">
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-center">
+    <section className="py-16 max-w-[1000px] mx-auto px-6 md:px-10 bg-white">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
         
         {/* Left Column: Product Slider */}
-        <div className="flex flex-col max-w-md mx-auto w-full">
-          <h2 className="text-3xl md:text-4xl font-medium tracking-tight text-black text-center mb-10">Shop the look</h2>
+        <div className="flex flex-col max-w-sm mx-auto w-full">
+          <h2 className="text-3xl font-medium tracking-tight text-black text-center mb-8" style={{ fontFamily: 'var(--font-cormorant-garamond)' }}>Shop the look</h2>
           
           <div className="flex flex-col">
             {/* Active Product Image */}
@@ -75,7 +75,7 @@ export default function ShopTheLook() {
         </div>
 
         {/* Right Column: Editorial Image with Hotspots */}
-        <div className="bg-[#f0f0f0] relative w-full aspect-[3/4] lg:aspect-auto lg:h-[800px] overflow-hidden">
+        <div className="bg-[#f0f0f0] relative w-full aspect-[3/4] lg:aspect-auto lg:h-[550px] overflow-hidden rounded-sm">
           <Image 
             src="/oldmoney pics/oldmoney skyblue1.JPG" 
             alt="Shop the look" 

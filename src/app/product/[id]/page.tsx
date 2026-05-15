@@ -50,7 +50,7 @@ export default function ProductPage() {
     <div className="relative bg-[#ede9e3]">
       {/* ─── Full-screen horizontal image strip ─────────────────────── */}
       <div
-        className="flex h-screen overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
+        className="flex h-[85vh] overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
         style={{ scrollbarWidth: "none" }}
       >
         {images.map((src, i) => (
@@ -81,7 +81,7 @@ export default function ProductPage() {
       </button>
 
       {/* ─── Fixed bottom overlay ────────────────────────────────────── */}
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2.5rem)] max-w-[430px]">
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2.5rem)] max-w-[430px]" style={{ fontFamily: 'var(--font-cormorant-garamond)' }}>
 
         {/* Info panel (expanded) */}
         {panel && (
