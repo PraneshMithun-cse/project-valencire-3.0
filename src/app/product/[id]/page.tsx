@@ -50,7 +50,7 @@ export default function ProductPage() {
     <div className="relative bg-[#ede9e3]">
       {/* ─── Full-screen horizontal image strip ─────────────────────── */}
       <div
-        className="flex h-[85vh] overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
+        className="flex h-screen overflow-x-auto overflow-y-hidden snap-x snap-mandatory"
         style={{ scrollbarWidth: "none" }}
       >
         {images.map((src, i) => (
