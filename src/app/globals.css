@@ -1,0 +1,732 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────
+   VALENCIRE — Global Design Tokens
+───────────────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+  --muted: #666666;
+  --very-muted: #9a9a9a;
+  --accent: #b8975a;
+  --surface: #f7f7f7;
+  --border: #e8e8e8;
+  --border-dark: #1a1a1a;
+  
+  /* Replace all custom fonts with Apple system fonts (SF Pro Display / Text automatically handled by macOS/iOS) */
+  --font-inter: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-cormorant: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Font families mapped from next/font CSS vars */
+@theme {
+  --font-display: var(--font-cormorant);
+  --font-ui: var(--font-inter);
+}
+
+/* ─── Dark mode: keep white theme always ─── */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Suppress Next.js dark mode flicker */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #000000;
+  }
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #000000; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: #333; }
+
+/* ─────────────────────────────────────────────
+   KEYFRAME ANIMATIONS
+───────────────────────────────────────────── */
+
+/* Marquee horizontal scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Scroll indicator line drop */
+@keyframes scrollLine {
+  0%   { transform: translateY(-100%); opacity: 1; }
+  100% { transform: translateY(200%); opacity: 0; }
+}
+
+/* Reveal from below */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(44px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Reveal from right */
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Pure fade */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Slow hero image drift */
+@keyframes heroDrift {
+  0%   { transform: scale(1.08) translateY(0); }
+  50%  { transform: scale(1.12) translateY(-12px); }
+  100% { transform: scale(1.08) translateY(0); }
+}
+
+/* Cursor blink for heading */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes slideInFromRight {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes slideInFromLeft {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 800ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 800ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY CLASSES
+───────────────────────────────────────────── */
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+  display: inline-flex;
+  min-width: 200%;
+  will-change: transform;
+}
+
+.animate-fade-up   { animation: fadeUp   0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-right{ animation: fadeRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-scale-in  { animation: scaleIn  1.0s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in   { animation: fadeIn   1.2s ease both; }
+.animate-hero-drift{ animation: heroDrift 12s ease-in-out infinite; }
+.animate-scroll-line { animation: scrollLine 1.6s ease-in-out infinite; }
+
+/* Delay helpers */
+.delay-100 { animation-delay: 0.10s; }
+.delay-200 { animation-delay: 0.22s; }
+.delay-300 { animation-delay: 0.34s; }
+.delay-400 { animation-delay: 0.48s; }
+.delay-500 { animation-delay: 0.62s; }
+.delay-600 { animation-delay: 0.78s; }
+.delay-700 { animation-delay: 0.95s; }
+
+/* ─── Marquee pause on hover ─── */
+.marquee-wrapper:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* ─── Luxury CTA Button ─── */
+.btn-luxury {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 40px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: #000;
+  color: #fff;
+  border: 1px solid #000;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-luxury:hover {
+  background: #fff;
+  color: #000;
+}
+
+.btn-luxury-inv {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 40px;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: #fff;
+  color: #000;
+  border: 1px solid #fff;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-luxury-inv:hover {
+  background: transparent;
+  color: #fff;
+}
+
+/* ─── Underline link ─── */
+.link-underline {
+  position: relative;
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-bottom: 2px;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-underline:hover::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+/* ─── Product Card image zoom ─── */
+.product-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+.product-img-wrap img {
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.product-img-wrap:hover img {
+  transform: scale(1.07) !important;
+}
+
+/* ─── Mega Menu ─── */
+.mega-menu {
+  position: fixed;
+  top: var(--nav-height, 100px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid #e8e8e8;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 40;
+}
+.mega-trigger:hover .mega-menu,
+.mega-menu:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* ─── Announcement bar text overflow ─── */
+.announcement-track {
+  white-space: nowrap;
+}
+
+/* ─── Section reveal on scroll (CSS only fallback) ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ─── Gold accent text ─── */
+.text-accent { color: var(--accent); }
+.border-accent { border-color: var(--accent); }
+
+/* ─────────────────────────────────────────────
+   SFI-INSPIRED: FOOTER PUSH REVEAL
+   Content slides over the footer, revealing it like
+   the Star Fades International site.
+───────────────────────────────────────────── */
+
+/* The footer sits fixed at the bottom; content scrolls over it. 
+   The main content wrapper needs a relative z-index. */
+.footer-reveal-wrapper {
+  position: relative;
+  z-index: 1;
+  background: #0a0a0a;
+  overflow: hidden;
+}
+
+/* Main content wrapper — sits ABOVE the footer to create push-reveal */
+.push-content-wrapper {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  /* Subtle shadow at bottom edge for depth illusion */
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Video push section — creates the "push" transition ── */
+.video-push-section {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  background: #000;
+  overflow: hidden;
+  /* Rounded bottom to create soft push into footer */
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER MARQUEE STRIP
+───────────────────────────────────────────── */
+.footer-marquee-strip {
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.footer-marquee-track {
+  display: inline-flex;
+  animation: footerMarquee 25s linear infinite;
+  will-change: transform;
+}
+
+.footer-marquee-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+  padding-right: 24px;
+  font-family: var(--font-inter);
+}
+
+@keyframes footerMarquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER MAIN GRID
+───────────────────────────────────────────── */
+.footer-main {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 72px 40px 56px;
+}
+
+@media (max-width: 768px) {
+  .footer-main {
+    padding: 48px 24px 40px;
+  }
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr) 1.4fr;
+  gap: 48px;
+}
+
+@media (max-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+/* ── Footer animations ── */
+.footer-hidden {
+  opacity: 0;
+  transform: translateY(36px);
+}
+
+.footer-animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-link-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.footer-link-animate-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Brand column ── */
+.footer-brand-col {
+  padding-right: 48px;
+}
+
+@media (max-width: 640px) {
+  .footer-brand-col {
+    padding-right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.footer-brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+@media (max-width: 640px) {
+  .footer-brand-logo {
+    align-items: center;
+  }
+}
+
+.footer-brand-desc {
+  margin-top: 24px;
+  font-size: 12px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.4);
+  max-width: 300px;
+  font-family: var(--font-inter);
+}
+
+/* ── Social icons ── */
+.footer-social-row {
+  margin-top: 32px;
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .footer-social-row {
+    justify-content: center;
+  }
+}
+
+.footer-social-icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-inter);
+}
+
+.footer-social-icon:hover {
+  border-color: #fff;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ── Link columns ── */
+.footer-link-col {
+  /* individual styling */
+}
+
+.footer-link-heading {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 24px;
+  font-family: var(--font-inter);
+}
+
+.footer-link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-link-item {
+  /* animated via JS classes */
+}
+
+.footer-link {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+  font-family: var(--font-inter);
+  position: relative;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-link:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* ── Contact column ── */
+.footer-contact-col {
+  /* styling */
+}
+
+.footer-email-link {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 20px;
+  font-family: var(--font-inter);
+  transition: opacity 0.3s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.footer-email-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-email-link:hover::after {
+  transform: scaleX(0);
+  transform-origin: right;
+}
+
+.footer-address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-address p,
+.footer-address a {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: var(--font-inter);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-address a:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Trust badges ── */
+.footer-trust-badges {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .footer-trust-item {
+    justify-content: center;
+  }
+}
+
+.footer-trust-check {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-trust-item span {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: var(--font-inter);
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER BOTTOM BAR
+───────────────────────────────────────────── */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.footer-bottom-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .footer-bottom-inner {
+    flex-direction: column;
+    padding: 16px 24px;
+  }
+}
+
+.footer-copyright {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.08em;
+  font-family: var(--font-inter);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-bottom-link {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.08em;
+  font-family: var(--font-inter);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-link:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ─────────────────────────────────────────────
+   SFI-STYLE MARQUEE SECTION DIVIDER
+   (horizontal text scroll between sections)
+───────────────────────────────────────────── */
+.marquee-section {
+  padding: 32px 0;
+  background: #000;
+  color: #fff;
+  border: none;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-section-track {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+  will-change: transform;
+}
+
+.marquee-section:hover .marquee-section-track {
+  animation-play-state: paused;
+}
+
+.marquee-section-text {
+  font-size: clamp(20px, 2.5vw, 32px);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #fff;
+  padding-right: 40px;
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.marquee-section:hover .marquee-section-text {
+  opacity: 1;
+}
+
+/* ─────────────────────────────────────────────
+   SMOOTH SECTION PUSH TRANSITIONS
+   (creates the feeling of content pushing/sliding)
+───────────────────────────────────────────── */
+@supports (animation-timeline: view()) {
+  .video-push-section {
+    animation: pushReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 50%;
+  }
+
+  @keyframes pushReveal {
+    from {
+      opacity: 0.5;
+      transform: scale(0.96);
+      border-radius: 24px;
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+      border-radius: 0;
+    }
+  }
+}
